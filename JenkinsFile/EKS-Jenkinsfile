@@ -9,14 +9,14 @@ pipeline {
     agent any
     stages {
         stage('Checkout from Git') {
-            steps {
-                git branch: 'master', url: 'https://github.com/RibunLoc/chatbot-ui.git'
+            steps {  
+                git branch: 'main', url: 'https://github.com/RibunLoc/chatbot-ui.git'
             }
         }
         stage('Initializing Terraform') {
             steps {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
-                dir('EKS-TF') {
+                dir('EKS-TF-custom') {
                     script {
                         sh 'terraform init'
                     }
@@ -51,7 +51,7 @@ pipeline {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') { 
                 script {
                     echo "${params.'Terraform-Action'}"
-                    dir('EKS-TF') {
+                    dir('EKS-TF-custom') {
                         script {
                             if (params.'Terraform-Action' == 'apply') {
                                 sh "terraform apply -auto-approve -var-file=${params.'File-Name'}"

@@ -1,0 +1,14 @@
+variable "vpc-name" {}
+variable "igw-name" {}
+variable "subnet-name-jenkins-az1" {}
+variable "subnet-name-jenkins-az2" {}
+variable "security-group-name" {}
+variable "subnet-name-EKS-az1" {}
+variable "subnet-name-EKS-az2" {}
+variable "rt-name-eks" {}
+variable "cluster-name" {}
+variable "iam-role-eks" {}
+variable "iam-role-node" {}
+variable "iam-policy-eks" {}
+variable "iam-policy-node" {}
+variable "eksnode-group-name" {}
