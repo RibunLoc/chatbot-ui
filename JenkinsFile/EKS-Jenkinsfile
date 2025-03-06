@@ -27,7 +27,7 @@ pipeline {
         stage('Validate Terraform Code') {
             steps {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
-                dir('EKS-TF') {
+                dir('EKS-TF-custom') {
                     script {
                         sh 'terraform validate'
                     }
@@ -38,7 +38,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
-                dir('EKS-TF') {
+                dir('EKS-TF-custom') {
                     script {
                         sh "terraform plan -var-file=${params.'File-Name'}"
                     }
