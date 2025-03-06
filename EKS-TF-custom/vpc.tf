@@ -22,7 +22,7 @@ data "aws_subnet" "subnet" {
     }
 }
 
-data "aws_subnet" "subnet" {
+data "aws_subnet" "subnet1" {
   filter {
     name = "tag:Name"
     values = [var.subnet-name-jenkins-az2]
